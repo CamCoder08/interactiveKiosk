@@ -21,15 +21,14 @@ class LogoView: UIView {
     }
     
     private func setupView() {
-            self.addSubview(logoImageView)
+        self.addSubview(logoImageView)
 
-            logoImageView.snp.makeConstraints { make in
-                make.top.equalToSuperview().inset(12)      // 상단 여백 (상태바 고려)
-                make.leading.equalToSuperview().inset(1)   // 왼쪽 여백
-                make.height.equalTo(30)                    // 적절한 높이
-                make.width.lessThanOrEqualTo(120)          // 너무 커지지 않도록 제한
-            }
-        }
-   
+        logoImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(12)      // 상단 여백 (상태바 고려)
+            $0.leading.equalToSuperview().inset(1)   // 왼쪽 여백
+            $0.height.equalTo(30)                    // 적절한 높이
+            $0.width.lessThanOrEqualTo(120)          // 너무 커지지 않도록 제한
+    }
+  }
 }
 
