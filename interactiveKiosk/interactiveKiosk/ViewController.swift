@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         logoView.backgroundColor = .white
         categoryView.backgroundColor = .white
         menuView.backgroundColor = .white
-        cartView.backgroundColor = .white
+        cartView.layer.cornerRadius = 10
         checkOutView.backgroundColor = .white
         setupViews()
         setupConstraints()
