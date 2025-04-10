@@ -26,6 +26,15 @@ class ViewController: UIViewController {
         checkOutView.backgroundColor = .white
         setupViews()
         setupConstraints()
+        
+        // 버튼 연결
+        checkOutView.cancelButton.addTarget(self, action: #selector(resetCart), for: .touchUpInside)
+        checkOutView.payButton.addTarget(self, action: #selector(handlePay), for: .touchUpInside)
+
+        // 테스트용 금액 표시 (나중에 함수로 대체)
+        checkOutView.orderValueLabel.text = "12,000원"
+        checkOutView.totalValueLabel.text = "12,000원"
+
     }
 
     private func setupViews() {
@@ -67,7 +76,24 @@ class ViewController: UIViewController {
         checkOutView.snp.makeConstraints {
             $0.top.equalTo(cartView.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview().inset(20)
-            $0.height.equalTo(130)
+            $0.height.equalTo(160)
         }
     }
+    
+    @objc func resetCart() {
+        let alert = UIAlertController(title: "전체 취소", message: "주문 내역을 모두 삭제하시겠습니까?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
+        alert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { _ in
+            // 실제 장바구니 삭제 함수 들어갈 자리
+            print("장바구니 초기화")
+        }))
+        present(alert, animated: true)
+    }
+
+    @objc func handlePay() {
+        let alert = UIAlertController(title: "결제 완료", message: "결제가 정상적으로 완료되었습니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        present(alert, animated: true)
+    }
+
 }
