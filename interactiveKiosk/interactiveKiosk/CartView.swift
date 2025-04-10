@@ -112,12 +112,15 @@ class CartCell: UITableViewCell {
     }
 
     func setCell() {
-        nameLabel.font = .systemFont(ofSize: 14)
+        nameLabel.font = UIFont(name: "BMDOHYEON", size: 13)
+        nameLabel.textColor = UIColor(hex: "3d3d3d")
 
-        countLabel.font = .systemFont(ofSize: 14)
+        countLabel.font = UIFont(name: "BMDOHYEON", size: 13)
+        countLabel.textColor = UIColor(hex: "3d3d3d")
         countLabel.textAlignment = .center
 
-        priceLabel.font = .boldSystemFont(ofSize: 14)
+        priceLabel.font = UIFont(name: "BMDOHYEON", size: 13)
+        priceLabel.textColor = UIColor(hex: "3d3d3d")
 
         plusButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
         plusButton.tintColor = UIColor(hex: "658147")

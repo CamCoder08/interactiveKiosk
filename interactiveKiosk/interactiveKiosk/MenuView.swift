@@ -134,15 +134,16 @@ class MenuCell: UICollectionViewCell {
             make.width.height.equalTo(65)
         }
 
-        titleLabel.font = .systemFont(ofSize: 13, weight: .medium)
+        titleLabel.font = UIFont(name: "BMDOHYEON", size: 12)
+        titleLabel.textColor = UIColor(hex: "#1f1f1f")
         titleLabel.textAlignment = .center
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(button.snp.bottom).offset(4)
             make.leading.trailing.equalToSuperview().inset(4)
         }
 
-        priceLabel.font = .systemFont(ofSize: 12)
-        priceLabel.textColor = .darkGray
+        priceLabel.font = UIFont(name: "BMDOHYEON", size: 11)
+        priceLabel.textColor = UIColor(hex: "#1f1f1f")
         priceLabel.textAlignment = .center
         priceLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(2)

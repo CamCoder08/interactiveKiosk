@@ -42,7 +42,7 @@ class CheckOutView: UIView {
 
     private func setupUI() {
         // 컨테이너 스타일
-        summaryContainer.backgroundColor = UIColor(hex: "#E7F0DC")
+        summaryContainer.backgroundColor = UIColor(hex: "#E9EDC9")
         summaryContainer.layer.cornerRadius = 12
         addSubview(summaryContainer)
 
@@ -50,8 +50,8 @@ class CheckOutView: UIView {
         orderTextLabel.text = "주문금액"
         totalTextLabel.text = "결제금액"
         [orderTextLabel, totalTextLabel].forEach {
-            $0.font = .systemFont(ofSize: 16)
-            $0.textColor = .black
+            $0.font = UIFont(name: "BMHANNAPro", size: 16)
+            $0.textColor = UIColor(hex: "3d3d3d")
             summaryContainer.addSubview($0)
         }
 
@@ -59,21 +59,23 @@ class CheckOutView: UIView {
         orderValueLabel.text = "0원"
         totalValueLabel.text = "0원"
         [orderValueLabel, totalValueLabel].forEach {
-            $0.font = .systemFont(ofSize: 16)
-            $0.textColor = .black
+            $0.font = UIFont(name: "BMHANNAPro", size: 16)
+            $0.textColor = UIColor(hex: "3d3d3d")
             $0.textAlignment = .right
             summaryContainer.addSubview($0)
         }
 
         // 버튼
         cancelButton.setTitle("전체 취소", for: .normal)
+        cancelButton.titleLabel?.font = UIFont(name: "BMHANNAPro", size: 16)
+        cancelButton.setTitleColor(UIColor(hex: "3d3d3d"), for: .normal)
         cancelButton.backgroundColor = UIColor(hex: "#D1BB9E")
-        cancelButton.setTitleColor(.white, for: .normal)
         cancelButton.layer.cornerRadius = 10
 
         payButton.setTitle("결제 하기", for: .normal)
+        payButton.titleLabel?.font = UIFont(name: "BMHANNAPro", size: 16)
+        payButton.setTitleColor(UIColor(hex: "3d3d3d"), for: .normal)
         payButton.backgroundColor = UIColor(hex: "#F6995C")
-        payButton.setTitleColor(.white, for: .normal)
         payButton.layer.cornerRadius = 10
 
         [cancelButton, payButton].forEach { addSubview($0) }
@@ -88,13 +90,13 @@ class CheckOutView: UIView {
 
         // 주문 텍스트
         orderTextLabel.snp.makeConstraints {
-            $0.top.equalTo(summaryContainer.snp.top).offset(10)
-            $0.leading.equalTo(summaryContainer).offset(12)
+            $0.top.equalTo(summaryContainer.snp.top).offset(15)
+            $0.leading.equalTo(summaryContainer).offset(20)
         }
 
         orderValueLabel.snp.makeConstraints {
             $0.centerY.equalTo(orderTextLabel)
-            $0.trailing.equalTo(summaryContainer).offset(-12)
+            $0.trailing.equalTo(summaryContainer).offset(-20)
         }
 
         // 총 결제 금액

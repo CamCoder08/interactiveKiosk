@@ -16,7 +16,7 @@ struct MenuItem {
         // 쌀국수류 메뉴
         MenuItem(imageName: "mainMenu1", title: "해산물 쌀국수", price: 2800, category: .rice),
         MenuItem(imageName: "mainMenu2", title: "힘줄 쌀국수", price: 3000, category: .rice),
-        MenuItem(imageName: "mainMenu3", title: "차돌 양지 힘줄 쌀국수", price: 4500, category: .rice),
+        MenuItem(imageName: "mainMenu3", title: "양지 힘줄 쌀국수", price: 4500, category: .rice),
         MenuItem(imageName: "mainMenu4", title: "차돌 양지 쌀국수", price: 4000, category: .rice),
         MenuItem(imageName: "mainMenu5", title: "양지 쌀국수", price: 2800, category: .rice),
         MenuItem(imageName: "mainMenu6", title: "차돌 쌀국수", price: 2800, category: .rice),

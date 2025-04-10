@@ -24,11 +24,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(hex: "FEFAE0")
         logoView.backgroundColor = .clear
-        categoryView.backgroundColor = .clear
+        categoryView.backgroundColor = UIColor(hex: "E9EDC9")
+        categoryView.layer.cornerRadius = 10
         menuView.backgroundColor = UIColor(hex: "E9EDC9")
-        cartView.layer.cornerRadius = 10
+        menuView.layer.cornerRadius = 20
+        cartView.layer.cornerRadius = 20
         checkOutView.backgroundColor = .clear
         setupViews()
         setupConstraints()
@@ -72,7 +74,7 @@ class ViewController: UIViewController {
     
     private func setupConstraints() {
         logoView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(28)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(25)
             $0.leading.equalToSuperview().offset(20)
             $0.trailing.equalToSuperview().offset(-20)
             $0.height.equalTo(60)
@@ -101,7 +103,7 @@ class ViewController: UIViewController {
         
         // 주문 금액 총합
         checkOutView.snp.makeConstraints {
-            $0.top.equalTo(cartView.snp.bottom).offset(10)
+            $0.top.equalTo(cartView.snp.bottom).offset(1)
             $0.leading.trailing.equalToSuperview()//.inset(20)
             $0.height.equalTo(160)
         }
@@ -109,15 +111,20 @@ class ViewController: UIViewController {
     
     func addToCart(menu: MenuItem) {
         if let index = cartItems.firstIndex(where: { $0.name == menu.title }) {
-            cartItems[index].quantity += 1
-            let updated = cartItems.remove(at: index) // 기존 항목 제거 후
-            cartItems.insert(updated, at: 0) // 맨 앞으로 이동
+            var existingItem = cartItems[index]
+            existingItem.quantity += 1
+
+            cartItems.remove(at: index)
+            cartItems.insert(existingItem, at: 0) // 기존 항목을 맨 위로 이동
         } else {
-            cartItems.append(CartItem(name: menu.title, price: menu.price, quantity: 1))
+            let newItem = CartItem(name: menu.title, price: menu.price, quantity: 1)
+            cartItems.insert(newItem, at: 0) // 새 항목도 항상 맨 위
         }
+
         updateSummary()
-        cartView.reload(with: cartItems) 
+        cartView.reload(with: cartItems)
     }
+
     
     func changeQuantity(for name: String, delta: Int) {
         guard let index = cartItems.firstIndex(where: { $0.name == name }) else { return }
