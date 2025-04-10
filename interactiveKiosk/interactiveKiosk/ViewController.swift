@@ -27,6 +27,10 @@ class ViewController: UIViewController {
         setupViews()
         setupConstraints()
         
+        categoryView.onCategorySelected = { [weak self] selectedIndex in
+               self?.menuView.updateCategory(to: selectedIndex)
+           }
+        
         // 버튼 연결
         checkOutView.cancelButton.addTarget(self, action: #selector(resetCart), for: .touchUpInside)
         checkOutView.payButton.addTarget(self, action: #selector(handlePay), for: .touchUpInside)

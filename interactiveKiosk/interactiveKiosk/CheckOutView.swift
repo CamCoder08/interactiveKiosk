@@ -233,8 +233,5 @@ class CheckOutView: UIView {
             $0.height.equalTo(160)
         }
     }
-    
-    
-    
 }
 
