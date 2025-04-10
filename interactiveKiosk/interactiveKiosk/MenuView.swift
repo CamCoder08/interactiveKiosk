@@ -12,6 +12,7 @@ class MenuView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlow
 
     // 현재 표시 중인 메뉴 목록 (카테고리 선택에 따라 갱신)
     var currentMenus: [MenuItem] = []
+    var onMenuSelected: ((MenuItem) -> Void)? 
 
     // 카테고리 선택에 따라 메뉴 목록 필터링
     func updateCategory(to index: Int) {
@@ -94,6 +95,9 @@ class MenuView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlow
 
         return CGSize(width: ((collectionView.frame.width -  60) / 2), height: fixedHeight)
     }
+    
+    
+    
 }
 
 // MARK: - 메뉴 셀 정의
@@ -111,6 +115,7 @@ class MenuCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
+        button.addTarget(self, action: #selector(menuTapped), for: .touchUpInside) // ✅ 추가!
     }
 
     required init?(coder: NSCoder) {
@@ -145,10 +150,32 @@ class MenuCell: UICollectionViewCell {
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // 셀에 데이터 바인딩
     func configure(imageName: String, title: String, price: String) {
         button.setImage(UIImage(named: imageName), for: .normal)
         titleLabel.text = title
         priceLabel.text = price
     }
+    
+    @objc private func menuTapped() {
+        let item = MenuItem(imageName: "", title: menuName, price: menuPrice, category: .rice) // category는 무조건 rice 말고 그냥 따로 받아야 좋음
+        menuView?.onMenuSelected?(item) // ✅ 클로저 실행
+    }
+
 }
