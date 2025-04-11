@@ -4,15 +4,15 @@ import SnapKit
 class CategoryView: UIView {
 
     private let categories = ["쌀국수", "사이드", "음료"]
-    
+
     var onCategorySelected: ((Int) -> Void)?
 
     private lazy var segmentedControl: UISegmentedControl = {
         let control = UISegmentedControl(items: categories)
         control.selectedSegmentIndex = 0 //첫번째 항목인 "쌀국수"기본 선택
 
-        control.selectedSegmentTintColor = UIColor(hex: "#597445")
-        control.backgroundColor = UIColor.systemGray5
+        control.selectedSegmentTintColor = UIColor(hex: "#bc5923")
+        control.backgroundColor = UIColor(hex: "F6995C")
 
         let normalAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.darkGray,
@@ -24,6 +24,16 @@ class CategoryView: UIView {
         ]
         control.setTitleTextAttributes(normalAttributes, for: .normal)
         control.setTitleTextAttributes(selectedAttributes, for: .selected)
+
+        control.setTitleTextAttributes([
+                .font: UIFont(name: "BMHANNAPro", size: 14) ?? .systemFont(ofSize: 14),
+                .foregroundColor: UIColor.black
+            ], for: .normal)
+
+            control.setTitleTextAttributes([
+                .font: UIFont(name: "BMHANNAPro", size: 14) ?? .systemFont(ofSize: 14),
+                .foregroundColor: UIColor.white
+            ], for: .selected)
 
         control.addTarget(self, action: #selector(segmentedControlChanged(_:)), for: .valueChanged)
         
