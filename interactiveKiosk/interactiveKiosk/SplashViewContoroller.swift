@@ -21,7 +21,7 @@ class SplashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hex: "FEFAE0")
+        view.backgroundColor = UIColor(hex: "ffd6ab")
 
         view.addSubview(logoImageView)
         logoImageView.snp.makeConstraints {

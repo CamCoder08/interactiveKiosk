@@ -15,6 +15,16 @@ class CartView: UIView, UITableViewDataSource {
     var cartItems: [CartItem] = []
     var onQuantityChanged: ((String, Int) -> Void)?
 
+    private let emptyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "장바구니가 비어있습니다"
+        label.font = UIFont(name: "BMDOHYEON", size: 14)
+        label.textColor = UIColor(hex: "#5e3e2f")
+        label.textAlignment = .center
+        return label
+    }()
+
+
     // 커스텀뷰에 쓰는 공식같은 개념...? (UIView의 초기화 및 자동 호출)
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,7 +41,10 @@ class CartView: UIView, UITableViewDataSource {
     func reload(with items: [CartItem]) {
         self.cartItems = items
         tableView.reloadData()
+
+        tableView.backgroundView = cartItems.isEmpty ? emptyLabel : nil
     }
+
 
 
 
@@ -39,9 +52,10 @@ class CartView: UIView, UITableViewDataSource {
     
     // 테이블뷰 설정 (override init안에서 호출 및 자동실행)
     func setTableView() {
-        tableView.backgroundColor = UIColor(hex: "E9EDC9")
+        tableView.backgroundColor = UIColor(hex: "edc59a")
         tableView.layer.cornerRadius = 10
         tableView.separatorStyle = .none
+        tableView.backgroundView = emptyLabel
         addSubview(tableView)
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -69,8 +83,8 @@ class CartView: UIView, UITableViewDataSource {
 
         let item = cartItems[indexPath.row] // 현재 줄에 해당하는 데이터 꺼내기
         cell.setData(name: item.name, count: item.quantity, price: item.price) // 셀에 값 넣기
-        cell.backgroundColor = UIColor(hex: "E9EDC9")
-        cell.selectionStyle = .none 
+        cell.backgroundColor = UIColor(hex: "edc59a")
+        cell.selectionStyle = .none
 
         cell.plus = {
             self.cartItems[indexPath.row].quantity += 1
@@ -113,21 +127,21 @@ class CartCell: UITableViewCell {
 
     func setCell() {
         nameLabel.font = UIFont(name: "BMDOHYEON", size: 13)
-        nameLabel.textColor = UIColor(hex: "3d3d3d")
+        nameLabel.textColor = UIColor(hex: "#14100e")
 
         countLabel.font = UIFont(name: "BMDOHYEON", size: 13)
-        countLabel.textColor = UIColor(hex: "3d3d3d")
+        countLabel.textColor = UIColor(hex: "#14100e")
         countLabel.textAlignment = .center
 
         priceLabel.font = UIFont(name: "BMDOHYEON", size: 13)
-        priceLabel.textColor = UIColor(hex: "3d3d3d")
+        priceLabel.textColor = UIColor(hex: "#14100e")
 
         plusButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
-        plusButton.tintColor = UIColor(hex: "658147")
+        plusButton.tintColor = UIColor(hex: "#33251d")
         plusButton.addTarget(self, action: #selector(plusTapped), for: .touchUpInside)
 
         minusButton.setImage(UIImage(systemName: "minus.circle.fill"), for: .normal)
-        minusButton.tintColor = UIColor(hex: "658147")
+        minusButton.tintColor = UIColor(hex: "#33251d")
         minusButton.addTarget(self, action: #selector(minusTapped), for: .touchUpInside)
 
         [nameLabel, minusButton, countLabel, plusButton, priceLabel].forEach {

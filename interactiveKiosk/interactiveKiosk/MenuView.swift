@@ -135,7 +135,7 @@ class MenuCell: UICollectionViewCell {
         }
 
         titleLabel.font = UIFont(name: "BMDOHYEON", size: 12)
-        titleLabel.textColor = UIColor(hex: "#1f1f1f")
+        titleLabel.textColor = UIColor(hex: "#14100e")
         titleLabel.textAlignment = .center
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(button.snp.bottom).offset(4)
@@ -143,7 +143,7 @@ class MenuCell: UICollectionViewCell {
         }
 
         priceLabel.font = UIFont(name: "BMDOHYEON", size: 11)
-        priceLabel.textColor = UIColor(hex: "#1f1f1f")
+        priceLabel.textColor = UIColor(hex: "#14100e")
         priceLabel.textAlignment = .center
         priceLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(2)

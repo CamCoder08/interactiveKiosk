@@ -13,7 +13,7 @@ class CheckOutView: UIView {
      // 금액 업데이트할 때 사용할 수 있음
      func updateTotalPrice(orderPrice: Int, totalPrice: Int) {
          orderValueLabel.text = "\(orderPrice)원"
-         totalValueLabel.text = "\(totalPrice)원"
+         totalValueLabel.text = "오픈할인 적용 \(totalPrice - 3000)원"
      }
     // 컨테이너 뷰 (회색 박스)
     private let summaryContainer = UIView()
@@ -42,7 +42,7 @@ class CheckOutView: UIView {
 
     private func setupUI() {
         // 컨테이너 스타일
-        summaryContainer.backgroundColor = UIColor(hex: "#E9EDC9")
+        summaryContainer.backgroundColor = UIColor(hex: "#edc59a")
         summaryContainer.layer.cornerRadius = 12
         addSubview(summaryContainer)
 
@@ -51,7 +51,7 @@ class CheckOutView: UIView {
         totalTextLabel.text = "결제금액"
         [orderTextLabel, totalTextLabel].forEach {
             $0.font = UIFont(name: "BMHANNAPro", size: 16)
-            $0.textColor = UIColor(hex: "3d3d3d")
+            $0.textColor = UIColor(hex: "#14100e")
             summaryContainer.addSubview($0)
         }
 
@@ -60,7 +60,7 @@ class CheckOutView: UIView {
         totalValueLabel.text = "0원"
         [orderValueLabel, totalValueLabel].forEach {
             $0.font = UIFont(name: "BMHANNAPro", size: 16)
-            $0.textColor = UIColor(hex: "3d3d3d")
+            $0.textColor = UIColor(hex: "#14100e")
             $0.textAlignment = .right
             summaryContainer.addSubview($0)
         }
@@ -68,13 +68,13 @@ class CheckOutView: UIView {
         // 버튼
         cancelButton.setTitle("전체 취소", for: .normal)
         cancelButton.titleLabel?.font = UIFont(name: "BMHANNAPro", size: 16)
-        cancelButton.setTitleColor(UIColor(hex: "3d3d3d"), for: .normal)
+        cancelButton.setTitleColor(UIColor(hex: "14100e"), for: .normal)
         cancelButton.backgroundColor = UIColor(hex: "#D1BB9E")
         cancelButton.layer.cornerRadius = 10
 
         payButton.setTitle("결제 하기", for: .normal)
         payButton.titleLabel?.font = UIFont(name: "BMHANNAPro", size: 16)
-        payButton.setTitleColor(UIColor(hex: "3d3d3d"), for: .normal)
+        payButton.setTitleColor(UIColor(hex: "14100e"), for: .normal)
         payButton.backgroundColor = UIColor(hex: "#F6995C")
         payButton.layer.cornerRadius = 10
 

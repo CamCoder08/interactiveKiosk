@@ -24,11 +24,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hex: "FEFAE0")
+        view.backgroundColor = UIColor(hex: "ffd6ab")
         logoView.backgroundColor = .clear
-        categoryView.backgroundColor = UIColor(hex: "E9EDC9")
+        categoryView.backgroundColor = UIColor(hex: "#edc59a")
         categoryView.layer.cornerRadius = 10
-        menuView.backgroundColor = UIColor(hex: "E9EDC9")
+        menuView.backgroundColor = UIColor(hex: "#edc59a")
         menuView.layer.cornerRadius = 20
         cartView.layer.cornerRadius = 20
         checkOutView.backgroundColor = .clear
